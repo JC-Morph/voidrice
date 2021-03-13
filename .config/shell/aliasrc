@@ -13,6 +13,7 @@ done; unset command
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
+	df="df -h" \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -vI" \
@@ -39,7 +40,12 @@ alias \
 	sdn="shutdown -h now" \
 	e="$EDITOR" \
 	v="$EDITOR" \
-	p="pacman" \
+	pac="sudo pacman -S" \
+	pacu="sudo pacman -Syu" \
+	paur="paru -S" \
+	pauru="paru -Sua" \
+	sumkin="sudo make install" \
+	sync="sudo sntp -Ss -M 128 0.uk.pool.ntp.org" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query" \
