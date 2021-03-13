@@ -16,7 +16,7 @@ endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'ap/vim-css-color'
-Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP', 'CtrlPTag'] }
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dermusikman/sonicpi.vim'
 Plug 'jreybert/vimagit'
 Plug 'junegunn/goyo.vim'
