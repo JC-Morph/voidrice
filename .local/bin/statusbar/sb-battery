@@ -29,9 +29,10 @@ for battery in /sys/class/power_supply/BAT?*; do
 		"Unknown") status="♻️" ;;
 		*) exit 1 ;;
 	esac
-	capacity="$(cat "$battery/capacity" 2>&1)"
+	capacity=$(cat "$battery/capacity")
+	warn=" "
 	# Will make a warn variable if discharging and low
 	[ "$status" = "🔋" ] && [ "$capacity" -le 25 ] && warn="❗"
 	# Prints the info
-	printf "%s%d%% %s\n" "$warn" "$capacity" "$status"; unset warn
+	printf "%d%%%s%s\n" "$capacity" "$warn" "$status"; unset warn
 done && exit 0
