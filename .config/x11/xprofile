@@ -15,7 +15,6 @@ remaps &		# run the remaps script, switching caps/esc and more; check it for mor
 unclutter &		# remove mouse when idle
 
 mpd &			# music player daemon-you might prefer it as a service though
-# jackd --realtime -d alsa &&
 # This line autostarts an instance of Pulseaudio that does not exit on idle.
 # This is "necessary" on Artix due to a current bug between PA and
 # Chromium-based browsers where they fail to start PA and use dummy output.
