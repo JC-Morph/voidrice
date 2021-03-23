@@ -13,14 +13,15 @@ done; unset command
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
-	df="df -h" \
+	bc="bc -ql" \
 	cp="cp -iv" \
+	df="df -h" \
 	mv="mv -iv" \
 	rm="rm -vI" \
-	bc="bc -ql" \
-	mkd="mkdir -pv" \
 	yt="yt-dlp --embed-metadata -i" \
+	mkd="mkdir -pv" \
 	yta="yt -x -f bestaudio/best" \
+	clip="xclip -sel clip" \
 	ffmpeg="ffmpeg -hide_banner"
 
 # Colorize commands when possible.
@@ -42,8 +43,8 @@ alias \
 	v="$EDITOR" \
 	pac="sudo pacman -S" \
 	pacu="sudo pacman -Syu" \
-	paur="paru -S" \
-	pauru="paru -Sua" \
+	pau="paru -S" \
+	pauu="paru -Sua" \
 	sumkin="sudo make install" \
 	sync="sudo sntp -Ss -M 128 0.uk.pool.ntp.org" \
 	xi="sudo xbps-install" \
