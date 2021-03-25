@@ -190,6 +190,8 @@ set title
 set undofile
 set wildmode=longest,list,full
 
+:highlight Folded ctermbg=5 ctermfg=0
+
 " -----------------------------------------------------------
 " Vim specific
 
