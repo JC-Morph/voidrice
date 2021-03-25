@@ -86,6 +86,7 @@ inoremap jk <esc>
 " ------------------------------------------------------------------------------
 
 " Shortcuts
+nmap <leader>b :CtrlPBufTag<CR>
 nmap <leader>t :CtrlPTag<CR>
 nmap <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 nmap <leader>n :NERDTreeToggle<CR>
