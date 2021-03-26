@@ -18,9 +18,9 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dermusikman/sonicpi.vim'
+Plug 'dyng/ctrlsf.vim'
 Plug 'jreybert/vimagit'
 Plug 'junegunn/goyo.vim'
-Plug 'lukesmithxyz/vimling'
 Plug 'mbbill/undotree',    { 'on': 'UndotreeToggle' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
@@ -54,55 +54,79 @@ nnoremap <leader>O O<esc>j
 " Move through wrapped lines row by row
 nnoremap j gj
 nnoremap k gk
-
 " Move to last selection in visual mode
 nnoremap gV `[v`]
+" Move to next line match
+nnoremap <leader>l ;
+" Move to previous line match
+nnoremap <leader>h ,
 
-" Replace all is aliased to S
-nnoremap S :%s//g<Left><Left>
+" Replace all
+nnoremap <leader>s :%s//g<Left><Left>
 
-" Replace ex mode with indent
-nnoremap Q =
-
+" Save and quit
+nnoremap <leader>qq ZZ
 " Save file as sudo on files that require root permission
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+" Save time
+nnoremap <leader>w :w<CR>
 
 " Session quicksave
-nmap <F5> :mksession!<cr>
+nmap <F5> :mksession!<CR>
 
 " Semi-colon command mode
 nnoremap ; :
 nnoremap <leader>; ;
-nnoremap q; q:
-
-" Spell-check
-" map <leader>sc :setlocal spell! spelllang=en_uk<CR>
 
 " Using escape is a joke
 inoremap jk <esc>
 
 " ------------------------------------------------------------------------------
-" Plugin settings
+" Plugins
 " ------------------------------------------------------------------------------
 
+" -----------------------------------------------------------
 " Shortcuts
-nmap <leader>b :CtrlPBufTag<CR>
-nmap <leader>t :CtrlPTag<CR>
-nmap <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+
+nmap <leader>g :Goyo \| set bg=light \| set linebreak<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>u :UndotreeToggle<CR>
 nmap <leader>v :VimwikiIndex
 
+" CtrlP
+nmap <leader>b :CtrlPBufTag<CR>
+nmap <leader>t :CtrlPTag<CR>
+
+" CtrlSF
+nmap <leader>fs     <Plug>CtrlSFPrompt
+nmap <leader>fp     <Plug>CtrlSFPwordPath
+nnoremap <leader>ff :CtrlSFToggle<CR>
+inoremap <leader>ff <Esc>:CtrlSFToggle<CR>
+vmap <leader>f      <Plug>CtrlSFVwordPath
+vmap <leader>F      <Plug>CtrlSFVwordExec
+
+" -----------------------------------------------------------
+" Settings
+
 " Airline status bar arrows
 let g:airline_powerline_fonts = 1
 
-" Ctrl-p ignorance and tags
+" CtrlP ignorance and tags
 let g:ctrlp_custom_ignore = {
 			\ 'dir': '\v[\/](\.(git|hg|svn)|\_site)$',
 			\ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|bmp)$',
-			\}
+			\ }
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_root_markers = ['tags']
+
+" CtrlSF auto-focus and defaults
+let g:ctrlsf_auto_focus = {
+			\ 'at': 'done',
+			\ 'duration_less_than': 1000
+			\ }
+let g:ctrlsf_default_root = 'project'
+let g:ctrlsf_position = 'right'
+let g:ctrlsf_winsize = '40%'
 
 " Nerdtree bookmarks
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -112,13 +136,6 @@ else
 	let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
 endif
 
-" Vimling shortcuts
-nm <leader><leader>d :call ToggleDeadKeys()<CR>
-imap <leader><leader>d <esc>:call ToggleDeadKeys()<CR>a
-nm <leader><leader>i :call ToggleIPA()<CR>
-imap <leader><leader>i <esc>:call ToggleIPA()<CR>a
-nm <leader><leader>q :call ToggleProse()<CR>
-
 " Vimwiki file associations
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
@@ -127,13 +144,15 @@ let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 " Larbs additions
 " ------------------------------------------------------------------------------
 
-" Check file in shellcheck
-map <leader>s :!clear && shellcheck -x %<CR>
+" Shellcheck
+map <leader>Sh :!clear && shellcheck -x %<CR>
+" Spellcheck
+map <leader>Sp :setlocal spell! spelllang=en_uk<CR>
 
 " Compile groff/LaTeX/markdown/etc
-map <leader>c :w! \| !compiler "<c-r>%"<CR>
+map <leader>cc :w! \| !compiler "<c-r>%"<CR>
 " Open corresponding .pdf/.html or preview
-map <leader>p :!opout <c-r>%<CR><CR>
+map <leader>cp :!opout <c-r>%<CR><CR>
 
 " Enable Goyo by default for mutt writing
 autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
@@ -152,7 +171,7 @@ function! ToggleHiddenAll()
 		set laststatus=2
 	endif
 endfunction
-nnoremap <leader>h :call ToggleHiddenAll()<CR>
+nnoremap <leader>H :call ToggleHiddenAll()<CR>
 
 " Load command shortcuts generated from bm-dirs and bm-files via shortcuts script.
 " Here leader is ";".
