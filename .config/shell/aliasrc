@@ -18,6 +18,7 @@ alias \
 	df="df -h" \
 	mv="mv -iv" \
 	rm="rm -vI" \
+	rr="ranger" \
 	yt="youtube-dl --add-metadata -i" \
 	mkd="mkdir -pv" \
 	yta="yt -x -f bestaudio/best" \
