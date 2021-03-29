@@ -19,6 +19,7 @@ alias \
 	mv="mv -iv" \
 	rm="rm -vI" \
 	yt="yt-dlp --embed-metadata -i" \
+	rr="ranger" \
 	mkd="mkdir -pv" \
 	yta="yt -x -f bestaudio/best" \
 	clip="xclip -sel clip" \
