@@ -64,12 +64,12 @@ nnoremap <leader>h ,
 " Replace all
 nnoremap <leader>s :%s//g<Left><Left>
 
-" Save and quit
+" Quick quit
 nnoremap <leader>qq ZZ
+" Quick write
+nnoremap <leader>qw :w<CR>
 " Save file as sudo on files that require root permission
-cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-" Save time
-nnoremap <leader>w :w<CR>
+cnoremap !! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Session quicksave
 nmap <F5> :mksession!<CR>
@@ -82,7 +82,7 @@ nnoremap <leader>; ;
 inoremap jk <esc>
 
 " ------------------------------------------------------------------------------
-" Plugins
+" Plugin
 " ------------------------------------------------------------------------------
 
 " -----------------------------------------------------------
@@ -215,8 +215,6 @@ set title
 set undofile
 set wildmode=longest,list,full
 
-:highlight Folded ctermbg=5 ctermfg=0
-
 " -----------------------------------------------------------
 " Vim specific
 
@@ -247,6 +245,16 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
 autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " Set cwd to location of current file
 autocmd BufEnter * silent! lcd %:p:h
+
+" ------------------------------------------------------------------------------
+" Highlights
+" ------------------------------------------------------------------------------
+
+highlight Search ctermfg=189 ctermbg=55
+highlight! link Folded Search
+highlight! link Visual Search
+highlight! link ctrlsfLnumMatch Search
+highlight! link ctrlsfMatch Search
 
 " Remove diff highlighting for altered characters only
 if &diff
