@@ -5,10 +5,20 @@
 # If you don't plan on reverting to bash, you can remove the link in ~/.profile
 # to clean up.
 
-# Adds `~/.local/bin` to $PATH
+# $PATH
+# `~/.local/bin`
 export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+# Node
+export PATH="$HOME/.node_modules/bin:$PATH"
 
 unsetopt PROMPT_SP
+
+# Source chruby
+source /usr/share/chruby/chruby.sh
+# Set default ruby
+chruby ruby-3
+# User-wide npm install
+export npm_config_prefix=~/.node_modules
 
 # Default programs:
 export EDITOR="nvim"
