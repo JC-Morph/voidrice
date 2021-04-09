@@ -46,8 +46,8 @@ alias \
 	pacu="sudo pacman -Syu" \
 	pau="paru -S" \
 	pauu="paru -Sua" \
+	rr="ranger" \
 	sumkin="sudo make install" \
-	sync="sudo sntp -Ss -M 128 0.uk.pool.ntp.org" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query" \
