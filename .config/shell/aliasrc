@@ -20,7 +20,8 @@ alias \
 	rm="rm -vI" \
 	yt="youtube-dl --add-metadata -i" \
 	mkd="mkdir -pv" \
-	yta="yt -x -f bestaudio/best" \
+	yta="yt -x -f bestaudio/best -o '%(title)s.%(ext)s'" \
+	ytp="yt -x -f bestaudio/best -o '%(autonumber)s_%(title)s.%(ext)s'" \
 	clip="xclip -sel clip" \
 	ffmpeg="ffmpeg -hide_banner"
 
