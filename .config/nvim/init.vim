@@ -14,6 +14,9 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 	autocmd VimEnter * PlugInstall
 endif
 
+map ,, :keepp /<++><CR>ca<
+imap ,, <esc>:keepp /<++><CR>ca<
+
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -69,7 +72,8 @@ nnoremap <leader>qq ZZ
 " Quick write
 nnoremap <leader>qw :w<CR>
 " Save file as sudo on files that require root permission
-cnoremap !! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+" cnoremap !! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Session quicksave
 nmap <F5> :mksession!<CR>
