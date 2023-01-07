@@ -1,5 +1,5 @@
 !! Transparency (0-1):
-*.alpha: 0.8
+*.alpha: 0.77
 
 !! Set a default font and font size as below:
 /* *.font: monospace:pixelsize=15 */
@@ -15,22 +15,40 @@
 /* white	7	15 */
 
 /* !! lukovision: */
-*.color0: #282828
-*.color1: #68d66a
-*.color2: #a22ddf
-*.color3: #21bad7
-*.color4: #dfa22d
-*.color5: #c284a0
-*.color6: #df492d
-*.color7: #a7a7a7
-*.color8: #dfa22d
-*.color9: #fb4934
-*.color10: #c284a0
-*.color11: #fabd2f
-*.color12: #83a598
-*.color13: #d3869b
-*.color14: #8ec07c
-*.color15: #ebdbb2
+/* *.color0: #282828 */
+/* *.color1: #68d66a */
+/* *.color2: #a22ddf */
+/* *.color3: #21bad7 */
+/* *.color4: #dfa22d */
+/* *.color5: #c284a0 */
+/* *.color6: #df492d */
+/* *.color7: #a7a7a7 */
+/* *.color8: #dfa22d */
+/* *.color9: #fb4934 */
+/* *.color10: #c284a0 */
+/* *.color11: #fabd2f */
+/* *.color12: #83a598 */
+/* *.color13: #d3869b */
+/* *.color14: #8ec07c */
+/* *.color15: #ebdbb2 */
+
+/* !! monokai */
+/* *color0: #1c1d19 */
+/* *color1: #d01b24 */
+/* *color2: #a7d32c */
+/* *color3: #d8cf67 */
+/* *color4: #61b8d0 */
+/* *color5: #695abb */
+/* *color6: #d53864 */
+/* *color7: #fefffe */
+/* *color8: #1c1d19 */
+/* *color9: #d12a24 */
+/* *color10: #a7d32c */
+/* *color11: #d8cf67 */
+/* *color12: #61b8d0 */
+/* *color13: #695abb */
+/* *color14: #d53864 */
+/* *color15: #fefffe */
 
 /* !! gruvbox: */
 /* *.color0: #1d2021 */
@@ -152,22 +170,22 @@
 /* ! Dracula Xresources palette */
 /* *.foreground: #F8F8F2 */
 /* *.background: #282A36 */
-/* *.color0:     #000000 */
-/* *.color8:     #4D4D4D */
-/* *.color1:     #FF5555 */
-/* *.color9:     #FF6E67 */
-/* *.color2:     #50FA7B */
-/* *.color10:    #5AF78E */
-/* *.color3:     #F1FA8C */
-/* *.color11:    #F4F99D */
-/* *.color4:     #BD93F9 */
-/* *.color12:    #CAA9FA */
-/* *.color5:     #FF79C6 */
-/* *.color13:    #FF92D0 */
-/* *.color6:     #8BE9FD */
-/* *.color14:    #9AEDFE */
-/* *.color7:     #BFBFBF */
-/* *.color15:    #E6E6E6 */
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
 
 /* *.background: .color0 */
 /* *.color256: 0#1d2021 */
