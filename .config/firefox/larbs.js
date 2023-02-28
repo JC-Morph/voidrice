@@ -32,10 +32,16 @@ user_pref("dom.push.enabled", false);
 user_pref("extensions.pocket.enabled", false);
 
 // Don't autodelete cookies on shutdown:
-user_pref("clearOnShutdown.cookies", false);
+user_pref("privacy.clearOnShutdown.cookies", false);
 
 // Enable custom userChrome.js:
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
 // This could otherwise cause some issues on bank logins and other annoying sites:
 user_pref("network.http.referer.XOriginPolicy", 0);
+
+// Disable Firefox sync and its menu entries
+user_pref("identity.fxaccounts.enabled", false);
+
+// Fix the issue where right mouse button instantly clicks
+user_pref("ui.context_menus.after_mouseup", true);

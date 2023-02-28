@@ -3,9 +3,7 @@
 # This script is called on startup to remap keys.
 # Decrease key repeat delay to 300ms and increase key repeat rate to 50 per second.
 xset r rate 300 50
-# Map caps lock key to escape
-setxkbmap -option caps:escape
+# Map caps lock key to escape, and menu key to right super
+setxkbmap -option caps:escape,altwin:menu_win
 # Turn off caps lock function since there is no longer a key for it
-xset -q | grep "Caps Lock:\s*on" && xdotool key Caps_Lock
-# Map the menu button to right super
-xmodmap -e 'keycode 135 = Super_R'
+xset -q | grep -q "Caps Lock:\s*on" && xdotool key Caps_Lock

@@ -245,8 +245,11 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Move cursor to last line on open
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
 			\| exe "normal! g'\"" | endif
-" Remove trailing whitespace on exit
-autocmd BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+" Deletes trailing whitespace and eof newlines on save
+autocmd BufWritePre * let currPos = getpos(".")
+autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * %s/\n\+\%$//e
+autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 " Set cwd to location of current file
 autocmd BufEnter * silent! lcd %:p:h
 
