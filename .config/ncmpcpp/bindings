@@ -429,18 +429,19 @@ def_key "h"
 def_key "l"
     next_column
 
-def_key "."
-    show_lyrics
-
 def_key "n"
     next_found_item
 def_key "N"
     previous_found_item
 
 # not used but bound
+def_key "F"
+    move_sort_order_down
 def_key "J"
     move_sort_order_down
 def_key "K"
+    move_sort_order_up
+def_key "L"
     move_sort_order_up
 def_key "h"
   jump_to_parent_directory
