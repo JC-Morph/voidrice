@@ -1,4 +1,4 @@
-" An vim, by Luko
+" An vim, by JC
 
 map <space> <leader>
 
@@ -118,7 +118,7 @@ vmap <leader>f      <Plug>CtrlSFVwordPath
 " -----------------------------------------------------------
 " Settings
 
-" Airline status bar arrows
+" Airline arrows
 let g:airline_powerline_fonts = 1
 
 " CtrlP ignorance and tags
