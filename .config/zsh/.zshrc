@@ -76,6 +76,7 @@ bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
+source $ZDOTDIR/expand-multiple-dots.zsh
 # Load chruby
 source /usr/share/chruby/chruby.sh
 
