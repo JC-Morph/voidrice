@@ -74,12 +74,14 @@ nnoremap <leader>h ,
 nnoremap <leader>s :%s//g<Left><Left>
 
 " Quick quit
+nnoremap <leader>qe :q!<CR>
+nnoremap <leader>qa :qa<CR>
+" Quick write quit
 nnoremap <leader>qq ZZ
 " Quick write
 nnoremap <leader>qw :w<CR>
 " Save file as sudo on files that require root permission
-" cnoremap !! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+cnoremap !! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Session quicksave
 nmap <F5> :mksession!<CR>
@@ -104,16 +106,14 @@ nmap <leader>u :UndotreeToggle<CR>
 nmap <leader>v :VimwikiIndex
 
 " CtrlP
-nmap <leader>b :CtrlPBufTag<CR>
+nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>t :CtrlPTag<CR>
 
 " CtrlSF
 nmap <leader>fs     <Plug>CtrlSFPrompt
 nmap <leader>fp     <Plug>CtrlSFPwordPath
 nnoremap <leader>ff :CtrlSFToggle<CR>
-inoremap <leader>ff <Esc>:CtrlSFToggle<CR>
 vmap <leader>f      <Plug>CtrlSFVwordPath
-vmap <leader>F      <Plug>CtrlSFVwordExec
 
 " -----------------------------------------------------------
 " Settings
