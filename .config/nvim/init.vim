@@ -18,18 +18,24 @@ map ,, :keepp /<++><CR>ca<
 imap ,, <esc>:keepp /<++><CR>ca<
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
-Plug 'ap/vim-css-color'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dermusikman/sonicpi.vim'
-Plug 'dyng/ctrlsf.vim'
-Plug 'jreybert/vimagit'
 Plug 'junegunn/goyo.vim'
-Plug 'mbbill/undotree',    { 'on': 'UndotreeToggle' }
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+" File navigation plugs
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dyng/ctrlsf.vim'
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
-Plug 'vim-airline/vim-airline'
+" Web dev plugs
+" Plug 'leafgarland/typescript-vim'
+" Plug 'jparise/vim-graphql'
+Plug 'othree/html5.vim'
+Plug 'ap/vim-css-color'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 " ------------------------------------------------------------------------------
