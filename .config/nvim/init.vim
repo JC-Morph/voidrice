@@ -263,11 +263,16 @@ autocmd BufEnter * silent! lcd %:p:h
 " Highlights
 " ------------------------------------------------------------------------------
 
-highlight Search ctermfg=189 ctermbg=55
+hi Search ctermfg=188 ctermbg=99
 highlight! link Folded Search
 highlight! link Visual Search
 highlight! link ctrlsfLnumMatch Search
 highlight! link ctrlsfMatch Search
+" Vimdiff
+hi DiffAdd 	ctermfg=188 ctermbg=99
+hi DiffChange	ctermfg=180 ctermbg=none
+hi DiffDelete	ctermfg=189 ctermbg=99
+hi DiffText	ctermfg=188 ctermbg=none
 
 " Remove diff highlighting for altered characters only
 if &diff
