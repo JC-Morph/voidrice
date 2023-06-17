@@ -192,7 +192,7 @@ source ~/.config/nvim/shortcuts.vim
 " -----------------------------------------------------------
 " Automatic file updates
 
-" When shortcut files are updated, renew bash and ranger configs with new material
+" Renew configs when shortcut files are updated
 autocmd BufWritePost bm-files,bm-dirs !shortcuts
 " Run xrdb whenever Xdefaults or Xresources are updated
 autocmd BufRead,BufNewFile xresources,xdefaults set filetype=xdefaults
@@ -251,10 +251,12 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Move cursor to last line on open
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
 			\| exe "normal! g'\"" | endif
-" Deletes trailing whitespace and eof newlines on save
+" Delete trailing whitespace and eof newlines on save
 autocmd BufWritePre * let currPos = getpos(".")
 autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritePre * %s/\n\+\%$//e
+autocmd BufWritePre *.[ch] %s/\%$/\r/e " add trailing newline for ANSI C standard
+autocmd BufWritePre *neomutt* %s/^--$/-- /e " dash-dash-space signature delimiter in emails
 autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 " Set cwd to location of current file
 autocmd BufEnter * silent! lcd %:p:h
