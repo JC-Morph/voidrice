@@ -118,6 +118,13 @@ vmap <leader>f      <Plug>CtrlSFVwordPath
 " -----------------------------------------------------------
 " Settings
 
+" Airline larbs
+if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+endif
+let g:airline_symbols.colnr = ' C:'
+let g:airline_symbols.linenr = ' L:'
+let g:airline_symbols.maxlinenr = '☰ '
 " Airline arrows
 let g:airline_powerline_fonts = 1
 

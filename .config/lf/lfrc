@@ -47,7 +47,7 @@ cmd open ${{
     esac
 }}
 
-cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
+cmd mkdir $mkdir -p "$@"
 
 cmd extract ${{
 	clear; tput bold
@@ -55,7 +55,22 @@ cmd extract ${{
 	printf "\n%s\n  " "$fx"
 	printf "Extract? [y = yes] "
 	read ans
-	[ $ans = "y" ] && aunpack $fx
+	[ $ans = "y" ] && {
+		case $fx in
+			*.tar.bz2)   tar xjf $fx     ;;
+			*.tar.gz)    tar xzf $fx     ;;
+			*.bz2)       bunzip2 $fx     ;;
+			*.rar)       unrar e $fx     ;;
+			*.gz)        gunzip $fx      ;;
+			*.tar)       tar xf $fx      ;;
+			*.tbz2)      tar xjf $fx     ;;
+			*.tgz)       tar xzf $fx     ;;
+			*.zip)       unzip $fx       ;;
+			*.Z)         uncompress $fx  ;;
+			*.7z)        7z x $fx        ;;
+			*.tar.xz)    tar xf $fx      ;;
+		esac
+	}
 }}
 
 cmd delete ${{
@@ -121,7 +136,7 @@ map D delete
 map E extract
 map C copyto
 map M moveto
-map <c-n> push :mkdir<space>
+map <c-n> push :mkdir<space>""<left>
 map <c-r> reload
 map <c-s> set hidden!
 map <enter> shell

@@ -7,7 +7,7 @@ url="${WTTRURL:-wttr.in}"
 weatherreport="${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport"
 
 # Get a weather report from 'wttr.in' and save it locally.
-getforecast() { curl -sf "$url/$LOCATION" > "$weatherreport" || exit 1; }
+getforecast() { timeout --signal=1 2s curl -sf "$url/$LOCATION" > "$weatherreport" || exit 1; }
 
 # Forecast should be updated only once a day.
 checkforecast() {
@@ -45,7 +45,7 @@ case $BLOCK_BUTTON in
 ☔: Chance of rain/snow
 🥶: Daily low
 🌞: Daily high" ;;
-	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
 checkforecast || getforecast
