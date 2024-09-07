@@ -73,8 +73,9 @@ webcam() { ffmpeg \
 audio() { \
 	ffmpeg \
 	-f alsa -i default \
-	-c:a flac \
-	"$HOME/audio-$(date '+%y%m%d-%H%M-%S').flac" &
+	-ar 44100 \
+	-c:a pcm_s24le \
+	"$HOME/audio-$(date '+%y%m%d-%H%M-%S').wav" &
 	echo $! > /tmp/recordingpid
 	updateicon "🎙️"
 	}
