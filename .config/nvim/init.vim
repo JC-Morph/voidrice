@@ -1,5 +1,7 @@
 " An vim, by JC
 
+source $VIMRUNTIME/colors/vim.lua
+
 map <space> <leader>
 
 " ------------------------------------------------------------------------------
@@ -20,6 +22,7 @@ imap ,, <esc>:keepp /<++><CR>ca<
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'junegunn/goyo.vim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'ngmy/vim-rubocop'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -65,10 +68,12 @@ nnoremap j gj
 nnoremap k gk
 " Move to last selection in visual mode
 nnoremap gV `[v`]
-" Move to next line match
+" Move to a line match
 nnoremap <leader>l ;
-" Move to previous line match
 nnoremap <leader>h ,
+" Move to a line in next paragraph
+nnoremap <leader>[ {k
+nnoremap <leader>] }j
 
 " Replace all
 nnoremap <leader>s :%s//g<Left><Left>
@@ -213,6 +218,7 @@ autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/
 " File associations
 
 autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
+autocmd BufRead,BufNewFile *.citrus set filetype=citrus
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 autocmd BufRead,BufNewFile *.tex set filetype=tex
 
