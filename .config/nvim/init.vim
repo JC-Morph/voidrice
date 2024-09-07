@@ -32,6 +32,12 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
+" Live code plugs
+" Plug 'timburgess/extempore.vim'
+" Plug 'rumblesan/improviz-vim'
+Plug 'supercollider/scvim'
+Plug 'dermusikman/sonicpi.vim'
+Plug 'JC-Morph/vim-tidal'
 " Web dev plugs
 " Plug 'leafgarland/typescript-vim'
 " Plug 'jparise/vim-graphql'
@@ -120,6 +126,26 @@ nmap <leader>fp     <Plug>CtrlSFPwordPath
 nnoremap <leader>ff :CtrlSFToggle<CR>
 vmap <leader>f      <Plug>CtrlSFVwordPath
 
+" Improviz
+nmap <leader>is	<Plug>ImprovizSend<CR>
+nmap <leader>it	<Plug>ImprovizToggleText<CR>
+
+" Tidal
+xmap <leader>e <Plug>TidalRegionSend
+xmap <c-e> <Plug>TidalRegionSend
+nmap <leader>e <Plug>TidalParagraphSend
+nmap <leader>l <Plug>TidalLineSend
+nmap <leader>p :TidalHush<CR>
+imap <c-e> <Esc><Plug>TidalParagraphSend<Esc>a
+" Add delay
+nmap <leader>ad o# delay 0.5<CR># delayfb 0.5<CR># delayt 0.25<Esc>
+" Add reverb
+nmap <leader>ar o# dry 0.4<CR># room 0.5<CR># size 0.6<Esc>
+" Add leslie cabinet
+nmap <leader>al o# leslie 0.5<CR># lrate 3.5<CR># lsize 1.5<Esc>
+" reset tidal console height
+nmap <leader>ii <c-j>10<c-w>_<c-k>
+
 " -----------------------------------------------------------
 " Settings
 
@@ -157,6 +183,12 @@ if has('nvim')
 else
 	let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
 endif
+
+" Sonic Pi with sonic-pi-tool
+let g:sonicpi_command = 'sonic-pi-tool'
+let g:sonicpi_send = 'eval-stdin'
+let g:sonicpi_stop = 'stop'
+let g:vim_redraw = 1
 
 " Vimwiki file associations
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
@@ -221,6 +253,7 @@ autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markd
 autocmd BufRead,BufNewFile *.citrus set filetype=citrus
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 autocmd BufRead,BufNewFile *.tex set filetype=tex
+autocmd BufRead,BufNewFile *.tidal set filetype=tidal
 
 " ------------------------------------------------------------------------------
 " Features
@@ -259,6 +292,8 @@ endif
 " Autocommands
 " ------------------------------------------------------------------------------
 
+" Detect Tidal comments
+autocmd FileType tidal setlocal commentstring=--\ %s
 " Disable automatic commenting on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Move cursor to last line on open
