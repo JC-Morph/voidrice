@@ -156,6 +156,8 @@ endif
 let g:airline_symbols.colnr = ' C:'
 let g:airline_symbols.linenr = ' L:'
 let g:airline_symbols.maxlinenr = '☰ '
+" let g:airline_symbols.maxlinenr = ' '
+" let g:airline#extensions#whitespace#symbol = '!'
 " Airline arrows
 let g:airline_powerline_fonts = 1
 
