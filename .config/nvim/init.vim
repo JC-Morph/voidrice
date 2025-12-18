@@ -51,6 +51,18 @@ call plug#end()
 " Remaps
 " ------------------------------------------------------------------------------
 
+set notermguicolors
+set title
+set bg=light
+set mouse=a
+set nohlsearch
+set clipboard+=unnamedplus
+set noshowmode
+set noruler
+set laststatus=0
+set noshowcmd
+colorscheme vim
+
 " Easier moving in split windows
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -233,7 +245,7 @@ nnoremap <leader>H :call ToggleHiddenAll()<CR>
 " Here leader is ";".
 " So ":vs ;cfz" will expand into ":vs /home/<user>/.config/zsh/.zshrc"
 " if typed fast without the timeout.
-source ~/.config/nvim/shortcuts.vim
+silent! source ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/shortcuts.vim
 
 " -----------------------------------------------------------
 " Automatic file updates
