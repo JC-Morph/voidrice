@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pw-jack sonic-pi-tool start-server

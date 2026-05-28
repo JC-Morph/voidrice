@@ -1,0 +1,7 @@
+#! /bin/sh -
+
+for doc in *.odt
+do
+	pandoc -f odt -o "${doc%.*}.pdf" "$doc" --pdf-engine=weasyprint
+	rm "$doc"
+done

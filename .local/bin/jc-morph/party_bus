@@ -1,0 +1,56 @@
+#!/bin/sh -
+set -eu
+
+BUS_NAME="party_bus"
+NEXT_STOP="SuperCollider"
+FINAL_STOP="Stereo Output"
+
+find_bus() {
+	wpctl status |
+	grep -F "$1" |
+	sed -E 's/^[[:space:]│]*\*?[[:space:]]*([0-9]+)\..*/\1/'
+}
+
+find_stop() {
+	wpctl status |
+	grep -F "$1" |
+	sed -E 's/^[[:space:]│]*\*?[[:space:]]*([0-9]+)\..*/\1/' |
+	sed 1q
+}
+
+# Destroy all existing party buses (skip system object 0)
+for id in $(find_bus "$BUS_NAME"); do
+	if [ "$id" != "0" ]; then
+		echo "Destroying bus $id..."
+		pw-cli destroy "$id" || true
+	fi
+done
+
+pactl load-module module-null-sink object.linger=1 \
+	sink_name="$BUS_NAME" channel_map=front-left,front-right
+
+NEW_BUS="$(find_bus "$BUS_NAME" | sed 1q)"
+
+if [ -z "$NEW_BUS" ]; then
+	echo "NO BUS TODAY" >&2
+	exit 1
+fi
+
+wpctl set-default "$NEW_BUS"
+
+# Route bus to destination
+TARGET_SINK="$(find_stop "$FINAL_STOP")"
+if [ -z "$TARGET_SINK" ]; then
+	echo "Bus stop '$FINAL_STOP' not found" >&2
+	exit 1
+fi
+echo "Routing $BUS_NAME to $FINAL_STOP..."
+
+# Unlink all existing connections from monitor ports
+pw-link -l | grep "$NEW_BUS:monitor" | while read -r line; do
+	pw-link -d $line || true
+done
+
+echo $NEW_BUS
+pw-link "$NEW_BUS:monitor_FL" "$NEXT_STOP:in_1"
+pw-link "$NEXT_STOP:out_1" "$FINAL_STOP

@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+set -eu
+
+STREAM_NAME=$1
+SINK_NAME=$2
+
+find_wp_id() {
+  wpctl status |
+    grep -F "$1" |
+    grep -o -E '[[:space:]][0-9]+\.' |
+    sed -E 's/[^0-9]//g' |
+    sed 1q
+}
+
+STREAM_ID="$(find_wp_id "$STREAM_NAME")"
+SINK_ID="$(find_wp_id "$SINK_NAME")"
+
+[ -n "$STREAM_ID" ] || { echo "Stream '$STREAM_NAME' not found" >&2; exit 1; }
+[ -n "$SINK_ID" ]   || { echo "Sink '$SINK_NAME' not found" >&2; exit 1; }
+
+STREAM_PORTS="$(pw-cli info "$STREAM_ID" | grep 'output.*Audio' | sed 's/.* //')"
+SINK_PORTS="$(pw-cli info "$SINK_ID"   | grep 'input.*Audio'  | sed 's/.* //')"
+
+paste -d' ' \
+  <(printf '%s\n' "$STREAM_PORTS") \
+  <(printf '%s\n' "$SINK_PORTS") |
+while read -r out in; do
+  pw-link "$out" "$in"
+done

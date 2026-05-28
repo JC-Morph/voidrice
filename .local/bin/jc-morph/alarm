@@ -1,0 +1,10 @@
+#!/bin/bash
+
+notify () {
+	sleep $1m
+	mpv ~/.local/share/alarm.wav & notify-send DINGGGGG DONGGGGG
+}
+
+[[ $1 -eq 1 ]] && plural="" || plural="s"
+echo "alarm will sound in $1 minute$plural"
+notify $1 </dev/null &>/dev/null &
