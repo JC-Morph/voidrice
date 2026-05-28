@@ -29,7 +29,7 @@ awk "!/^\s*#/ && !/^\s*\$/ {gsub(\"\\\s*#.*$\",\"\");
 	printf(\"abbr %s \42cd %s; and ls -A\42\n\",\$1,\$2) >> \"$fish_shortcuts\"  ;
 	printf(\"map g%s :cd %s<CR>\nmap t%s <tab>:cd %s<CR><tab>\nmap M%s <tab>:cd %s<CR><tab>:mo<CR>\nmap Y%s <tab>:cd %s<CR><tab>:co<CR> \n\",\$1,\$2, \$1, \$2, \$1, \$2, \$1, \$2)       >> \"$vifm_shortcuts\" ;
 	printf(\"config.bind(';%s', \42set downloads.location.directory %s ;; hint links download\42) \n\",\$1,\$2) >> \"$qute_shortcuts\" ;
-	printf(\"map C%s cd \42%s\42 \n\",\$1,\$2)           >> \"$lf_shortcuts\" ;
+	printf(\"map J%s cd \42%s\42 \n\",\$1,\$2)           >> \"$lf_shortcuts\" ;
 	printf(\"cmap ;%s %s\n\",\$1,\$2)                    >> \"$vim_shortcuts\" }"
 
 # Format the `files` file in the correct syntax and sent it to both configs.
