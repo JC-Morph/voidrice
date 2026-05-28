@@ -14,6 +14,7 @@ cfz	$ZDOTDIR/.zshrc						# zsh (shell) config
 cfa	${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc		# aliases used by zsh (and potentially other shells)
 cff	${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf	# font config
 cfp	${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile		# profile for zsh login settings
+cfP	${XDG_CONFIG_HOME:-$HOME/.config}/pry/pryrc		# pry repl config
 cfm	${XDG_CONFIG_HOME:-$HOME/.config}/mutt/muttrc		# mutt (email client) config
 cfn	${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/config	# newsboat (RSS reader)
 cfu	${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/urls		# RSS urls for newsboat
