@@ -23,15 +23,13 @@ alias \
 	bc="bc -ql" \
 	cp="cp -iv" \
 	df="df -h" \
-	mv="mv -iv" \
-	rm="rm -vI" \
-	rsync="rsync -vrPlu" \
+	ffmpeg="ffmpeg -hide_banner" \
+	mixxx="mixxx --developer" \
 	mkd="mkdir -pv" \
-	yt="yt-dlp --embed-metadata -i" \
-	yta="yt -x -f bestaudio/best -o '%(title)s.%(ext)s'" \
-	ytp="yt -x -f bestaudio/best -o '%(autonumber)s_%(title)s.%(ext)s'" \
-	clip="xclip -sel clip" \
-	ffmpeg="ffmpeg -hide_banner"
+	mv="mv -iv" \
+	pd="pd -rt" \
+	rm="rm -vI" \
+	rsync="rsync -vrPlu"
 
 # Colorize commands when possible.
 alias \
@@ -45,23 +43,41 @@ alias \
 alias \
 	ka="killall" \
 	g="git" \
+	gf="git fetch" \
+	gst="git status" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	sdn="shutdown -h now" \
 	e="$EDITOR" \
 	v="$EDITOR" \
-	pac="sudo pacman -S" \
-	pacu="sudo pacman -Syu" \
-	pau="paru -S" \
-	pauu="paru -Sua" \
-	rr="ranger" \
+	aud="mpv *" \
+	be="bundle exec" \
+	ee="exit" \
+	shh="signal-desktop" \
 	sumkin="sudo make install" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query" \
+	yt="yt-dlp --embed-metadata -i" \
+	yta="yt -x -f bestaudio/best -o '%(title)s.%(ext)s'" \
+	ytp="yt -x -f bestaudio/best -o '%(autonumber)s_%(title)s.%(ext)s'" \
 	z="zathura"
 
+# Package managing
 alias \
+	pac="sudo pacman -S" \
+	pacu="sudo pacman -Syu" \
+	pau="paru -S" \
+	pauu="paru -Sua" \
+	pacuu="pacu && pauu"
+
+# Miscellaneous
+alias \
+	clip="xclip -sel clip" \
+	gba="mgba -5" \
 	lf="lfub" \
-	magit="nvim -c MagitOnly" \
-	ref='shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc'
+	mg="nvim -c MagitOnly" \
+	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
+	sntpsync="sudo sntp -Ss -M 128 0.uk.pool.ntp.org" \
+	sta="trap '' 0 && st -A 0.33 >/dev/null 2>&1 & disown" \
+	weath="less -S ${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport"
