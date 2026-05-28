@@ -1,0 +1,78 @@
+# vim: set filetype=ruby:
+
+Pry.config.editor = proc {|file, line| "nvim +#{line} #{file}" }
+
+# Require custom methods
+%w[
+omit
+pew_daub
+prepend
+split
+].each do |rb|
+  require File.join('~/Code/ruby', "#{rb}.rb")
+end
+
+# Vamps
+# require '~/Code/ruby/stretch/vamp.rb'
+
+# Alghemy
+require '~/Code/ruby/alghemy/lib/alghemy.rb'
+
+# Directory specific
+case Dir.pwd.split('/').last
+# --- OCTATRACK
+when 'backups'
+  code  = '/home/luko/Code/ruby/octa'
+  babel = '/home/luko/babel'
+  otdir = '/mnt/octa/OUROBORO'
+  # otdir = '/mnt/backup/backup/Octa/OUROBORO'
+  require File.join(code, 'backup')
+  require File.join(code, 'octapool')
+  local_dir  = File.join(babel, 'share/octa/backups/OUROBORO/MANUA')
+  local_pool = File.join(babel, 'sound/Samples/AUDIO')
+  # backup = Backup.new(otdir, local_dir)
+  pool = Octapool.new(File.join(otdir, 'AUDIO'), local_pool)
+when 'citrus'
+  require 'citrus'
+  Citrus.load 'auto'
+# --- ALGHEMY
+when 'Algorithmy'
+  fire   = Element.evoke  'Carl.jpg'
+  rubedo = Elements.evoke 'Muybridge/*.png'
+when 'Playground'
+  require 'alghemy/fruit'
+  # camp   = Element.evoke  'campfire_interpoloop.mpg'
+  # fire   = Element.evoke  'psa_terminal_ps_negate.png'
+  # flames = Elements.evoke 'Alghemy/forever_wine/frames/*.png'
+  devil  = Element.evoke 'idol_of_the_devil.jpg'
+  words  = Element.evoke 'a_few_words.mp4'
+  wave   = Ladspa.new '1198'
+  air    = Element.evoke 'Alghemy/idol_of_the_devil/sub-son.wav'
+  water  = Element.evoke 'Alghemy/idol_of_the_devil/sub-son-LR2-com.mp4'
+  juli   = Element.evoke 'juli*'
+  wine   = Video.evoke   'forever_wine.gif'
+# --- OTHER
+when 'parse'
+  require File.join(Dir.pwd, 'cdp_parse')
+  def report
+    CdpParse.report
+  end
+end
+
+def itersam( words )
+  %i[elf robo stuffy old alien bass].each do |voice|
+    file = "sam_#{words.split[0..3].join('_')}_#{voice}.wav"
+    `sam #{samopts[voice]} -wav #{file} #{words}`
+  end
+end
+
+def samopts
+  {
+    elf: '-pitch 64 -throat 110 -mouth 160',
+    robo: '-pitch 60 -throat 190 -mouth 190',
+    stuffy: '-pitch 72 -throat 110 -mouth 105',
+    old: '-pitch 32 -throat 145 -mouth 145',
+    alien: '-pitch 64 -throat 150 -mouth 200',
+    bass: '-pitch 180 -throat 30 -mouth 15'
+  }
+end
