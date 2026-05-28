@@ -1,7 +1,5 @@
 " An vim, by JC
 
-source $VIMRUNTIME/colors/vim.lua
-
 map <space> <leader>
 
 " ------------------------------------------------------------------------------
@@ -15,9 +13,6 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 				\ ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
 	autocmd VimEnter * PlugInstall
 endif
-
-map ,, :keepp /<++><CR>ca<
-imap ,, <esc>:keepp /<++><CR>ca<
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'junegunn/goyo.vim'
@@ -50,18 +45,6 @@ call plug#end()
 " ------------------------------------------------------------------------------
 " Remaps
 " ------------------------------------------------------------------------------
-
-set notermguicolors
-set title
-set bg=light
-set mouse=a
-set nohlsearch
-set clipboard+=unnamedplus
-set noshowmode
-set noruler
-set laststatus=0
-set noshowcmd
-colorscheme vim
 
 " Easier moving in split windows
 map <C-h> <C-w>h
@@ -167,9 +150,8 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.colnr = ' C:'
 let g:airline_symbols.linenr = ' L:'
-let g:airline_symbols.maxlinenr = '☰ '
-" let g:airline_symbols.maxlinenr = ' '
-" let g:airline#extensions#whitespace#symbol = '!'
+let g:airline_symbols.maxlinenr = ' '
+let g:airline#extensions#whitespace#symbol = '!'
 " Airline arrows
 let g:airline_powerline_fonts = 1
 
@@ -206,7 +188,7 @@ let g:vim_redraw = 1
 
 " Vimwiki file associations
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 
 " ------------------------------------------------------------------------------
 " Larbs additions
@@ -275,9 +257,9 @@ autocmd BufRead,BufNewFile *.tidal set filetype=tidal
 
 set bg=light
 set clipboard+=unnamedplus
-set go=a
 set mouse=a
 set noshowmode
+set notermguicolors
 set number relativenumber
 set splitbelow splitright
 set tags+=.git/tags
@@ -299,7 +281,6 @@ if !has('nvim')
 
 	set backupdir=$VIM/backup
 	set undodir=$VIM/undo
-	set tags+=./tags;
 endif
 
 " ------------------------------------------------------------------------------
@@ -324,8 +305,10 @@ autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 autocmd BufEnter * silent! lcd %:p:h
 
 " ------------------------------------------------------------------------------
-" Highlights
+" Colours
 " ------------------------------------------------------------------------------
+
+colorscheme vim
 
 hi Search ctermfg=188 ctermbg=99
 highlight! link Folded Search
