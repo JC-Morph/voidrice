@@ -5,7 +5,8 @@
 Xcursor.theme: NeoAlien-dark
 
 !! Set default font and font size
-*.font: monospace:pixelsize=15
+!! Overrides Window manager setting
+/* *.font: monospace:pixelsize=15 */
 
 !! These might be for something maybe
 *.color256: #1d2021
@@ -24,22 +25,22 @@ Xcursor.theme: NeoAlien-dark
 /* white	7	15 */
 
 /* !! Shycore: */
-*.color0:  #000000
-*.color1:  #68d66a
-*.color2:  #ffaaaa
-*.color3:  #81bad7
-*.color4:  #aa3333
-*.color5:  #dfa22d
-*.color6:  #df492d
-*.color7:  #a7a7a7
-*.color8:  #dfa22d
-*.color9:  #fb4934
-*.color10: #c284a0
-*.color11: #fabd2f
-*.color12: #83a598
-*.color13: #d3869b
-*.color14: #8ec07c
-*.color15: #ebdbb2
+/* *.color0:  #000000 */
+/* *.color1:  #68d66a */
+/* *.color2:  #ffaaaa */
+/* *.color3:  #81bad7 */
+/* *.color4:  #aa3333 */
+/* *.color5:  #dfa22d */
+/* *.color6:  #df492d */
+/* *.color7:  #a7a7a7 */
+/* *.color8:  #dfa22d */
+/* *.color9:  #fb4934 */
+/* *.color10: #c284a0 */
+/* *.color11: #fabd2f */
+/* *.color12: #83a598 */
+/* *.color13: #d3869b */
+/* *.color14: #8ec07c */
+/* *.color15: #ebdbb2 */
 
 /* !! Base16: */
 /* *.color0:  #181818 */
@@ -59,25 +60,23 @@ Xcursor.theme: NeoAlien-dark
 /* *.color14: #86c1b9 */
 /* *.color15: #f8f8f8 */
 
-/* !! Dracula: */
-/* *.background: #282A36 */
-/* *.foreground: #F8F8F2 */
-/* *.color0:     #000000 */
-/* *.color1:     #FF5555 */
-/* *.color2:     #50FA7B */
-/* *.color3:     #F1FA8C */
-/* *.color4:     #BD93F9 */
-/* *.color5:     #FF79C6 */
-/* *.color6:     #8BE9FD */
-/* *.color7:     #BFBFBF */
-/* *.color8:     #4D4D4D */
-/* *.color9:     #FF6E67 */
-/* *.color10:    #5AF78E */
-/* *.color11:    #F4F99D */
-/* *.color12:    #CAA9FA */
-/* *.color13:    #FF92D0 */
-/* *.color14:    #9AEDFE */
-/* *.color15:    #E6E6E6 */
+!! Dracula:
+*.color0:     #000000
+*.color1:     #FF5555
+*.color2:     #50FA7B
+*.color3:     #F1FA8C
+*.color4:     #BD93F9
+*.color5:     #FF79C6
+*.color6:     #8BE9FD
+*.color7:     #BFBFBF
+*.color8:     #4D4D4D
+*.color9:     #FF6E67
+*.color10:    #5AF78E
+*.color11:    #F4F99D
+*.color12:    #CAA9FA
+*.color13:    #FF92D0
+*.color14:    #9AEDFE
+*.color15:    #E6E6E6
 
 /* !! Gruvbox: */
 /* *.color0:   #1d2021 */
