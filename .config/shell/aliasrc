@@ -24,6 +24,7 @@ alias \
 	cp="cp -iv" \
 	df="df -h" \
 	ffmpeg="ffmpeg -hide_banner" \
+	gfc="gif-for-cli -l 0" \
 	mixxx="mixxx --developer" \
 	mkd="mkdir -pv" \
 	mv="mv -iv" \
@@ -53,7 +54,7 @@ alias \
 	aud="mpv *" \
 	be="bundle exec" \
 	ee="exit" \
-	shh="signal-desktop" \
+	shhhhh="signal-desktop" \
 	sumkin="sudo make install" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
